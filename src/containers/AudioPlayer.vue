@@ -2,8 +2,8 @@
   <div class="player-container">
     <audio class="player" preload="true" controls="controls">
       <source
-        v-if="tracks.length > 0"
-        :src="`tracks/${tracks[selectedTrackIndex].file}`"
+        v-if="selectedTrack"
+        :src="`tracks/${selectedTrack.file}`"
         type="audio/mpeg"
       />
       Your browser does not support HTML5 Audio!
@@ -38,7 +38,10 @@ const tracklistVuexModule = namespace("tracklist");
 export default class AudioPlayer extends Vue {
   // Vuex state
   @tracklistVuexModule.State
-  tracklist: Track[] | undefined;
+  tracklist!: Track[];
+
+  @tracklistVuexModule.State
+  selectedTrack!: Track;
 
   // Vuex mutations
   @tracklistVuexModule.Mutation
@@ -47,22 +50,21 @@ export default class AudioPlayer extends Vue {
   @tracklistVuexModule.Mutation
   setSelectedTrackByIndex!: (trackIndex: number) => void;
 
+  // Vuex getters
+  @tracklistVuexModule.Getter
+  selectedTrackIndex!: number;
+
   // Local state
   tracks: Track[] = tracks;
 
-  selectedTrackIndex: number = 0;
-
-  // Actual audio player
   player: any = null;
 
   // Play song at selected index
   doPlaySong(index: number) {
-    this.selectedTrackIndex = index;
     if (this.player) {
       this.setSelectedTrackByIndex(index);
-      // Load selected song
-      this.player.load(this.tracks[index].file);
-      // Then play it
+      // Load selected song, then play it
+      this.player.load(this.selectedTrack.file);
       this.player.play();
     }
   }
@@ -82,10 +84,10 @@ export default class AudioPlayer extends Vue {
   }
 
   created() {
-    // Load all tracks
+    // Load track list
     this.setTracklist(this.tracks);
-    // Load first track
-    this.setSelectedTrackByIndex(this.selectedTrackIndex);
+    // Load first track into player
+    this.setSelectedTrackByIndex(0);
   }
 
   mounted() {

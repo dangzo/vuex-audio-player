@@ -21,11 +21,9 @@ export default class TracklistModelStore extends VuexModule {
     }
   }
 
-  get getTracklist(): Track[] {
-    return this.tracklist;
-  }
-
-  get getSelectedTrack(): Track {
-    return this.selectedTrack;
+  get selectedTrackIndex(): number {
+    return this.tracklist.findIndex(
+      track => track.file === this.selectedTrack.file
+    );
   }
 }
