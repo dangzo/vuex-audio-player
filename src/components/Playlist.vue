@@ -1,8 +1,17 @@
 <template>
   <ul class="playlist">
     <!-- <li className={`${currentPlaying(isActive)}`} onClick={this.clickSong}> -->
-    <li v-for="(track, index) in tracks" :key="`track-${index}`" :class="{ 'isPlaying': track.active }">
-      <SongItem :index="index" :author="track.author" :length="track.length" :title="track.title" />
+    <li
+      v-for="(track, index) in tracks"
+      :key="`track-${index}`"
+      :class="{ isPlaying: index === selectedTrackIndex }"
+    >
+      <SongItem
+        :index="index"
+        :author="track.author"
+        :length="track.length"
+        :title="track.title"
+      />
     </li>
   </ul>
 </template>
@@ -17,7 +26,10 @@ import SongItem from "@/components/SongItem.vue";
   }
 })
 export default class Playlist extends Vue {
-  @Prop({ type: Array, required: true, default: () => [] })
+  @Prop({ type: Array, required: true })
   tracks!: [];
+
+  @Prop({ type: Number, required: true })
+  selectedTrackIndex!: number;
 }
 </script>

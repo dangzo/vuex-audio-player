@@ -1,10 +1,14 @@
 <template>
   <div class="player-container">
     <audio class="player" preload="true" controls="controls">
-      <!-- <source :src=`tracks/${tracks[index].file}` type="audio/mpeg" /> -->
+      <source
+        v-if="tracks.length > 0"
+        :src="`tracks/${tracks[selectedTrackIndex].file}`"
+        type="audio/mpeg"
+      />
       Your browser does not support HTML5 Audio!
     </audio>
-    <Playlist :tracks="tracks" />
+    <Playlist :tracks="tracks" :selected-track-index="selectedTrackIndex" />
   </div>
 </template>
 
@@ -34,8 +38,13 @@ export default class AudioPlayer extends Vue {
   @tracklistVuexModule.Mutation
   setTracklist!: (newTracklist: Track[]) => void;
 
+  @tracklistVuexModule.Mutation
+  setSelectedTrackByIndex!: (trackIndex: number) => void;
+
   // Local state
   tracks: Track[] = tracks;
+
+  selectedTrackIndex: number = 0;
   /*
   import { playNext } from '../actions/audioPlayer.actions';
 
@@ -75,7 +84,10 @@ export default class AudioPlayer extends Vue {
   });
   */
   created() {
+    // Load all tracks
     this.setTracklist(tracks);
+    // Load first track
+    this.setSelectedTrackByIndex(0);
   }
 }
 </script>
