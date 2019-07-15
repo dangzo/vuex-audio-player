@@ -1,0 +1,13 @@
+/* Audio Player Styles
+================================================== */
+
+audio {
+	width: 100%;	
+	margin: 25px 0;
+}
+
+@media (max-width: 560px) {
+	audio {
+		margin: 15px 0;
+	}
+}

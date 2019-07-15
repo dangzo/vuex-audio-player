@@ -1,0 +1,65 @@
+
+@import './player.scss';
+@import './playlist.scss';
+
+
+/* Font Family
+================================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
+
+
+/* Global Styles
+================================================== */
+
+html, body {
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	background-color: #0665a2;
+	color: #fff;
+	font-size: 1.05rem;
+	font-family: "Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	letter-spacing: .025rem;
+	line-height: 1.618;
+	padding: 1rem 0;
+}
+
+*,::before, ::after {
+	box-sizing:	border-box;
+}
+
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent;
+}
+
+
+
+/* Typography / Links
+================================================== */
+
+p { color: #fff; display: block; font-size: .9rem; font-weight: 400; margin: 0 0 2px; }
+a, a:visited { color: #8cc3e6; outline: 0; text-decoration: underline; }
+a:hover, a:focus { color: #bbdef5; }
+p a, p a:visited { line-height: inherit; }
+
+
+
+/* App specifics
+================================================== */
+
+
+.align-center {
+	text-align: center;
+	margin: 50px;
+}
+
+@media (max-width: 560px) {
+	h1 {
+		font-size: 28px;
+	}
+	.align-center {
+		margin: 25px 0;
+	}
+}
