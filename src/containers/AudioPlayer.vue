@@ -4,20 +4,39 @@
       <!-- <source :src=`tracks/${tracks[index].file}` type="audio/mpeg" /> -->
       Your browser does not support HTML5 Audio!
     </audio>
-    <!-- <Playlist /> -->
+    <Playlist :tracks="tracks" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { namespace } from "vuex-class";
+import Playlist from "@/components/Playlist.vue";
 
-@Component
+import tracks from "@/assets/tracks";
+
+// Model
+import { Track } from "@/models/Track";
+
+const tracklistVuexModule = namespace("tracklist");
+
+@Component({
+  components: {
+    Playlist
+  }
+})
 export default class AudioPlayer extends Vue {
-  /*
-  import React, { Component } from 'react';
-  import PropTypes from 'prop-types';
-  import { connect } from 'react-redux';
+  // Vuex state
+  @tracklistVuexModule.State
+  tracklist: Track[] | undefined;
 
+  // Vuex mutations
+  @tracklistVuexModule.Mutation
+  setTracklist!: (newTracklist: Track[]) => void;
+
+  // Local state
+  tracks: Track[] = tracks;
+  /*
   import { playNext } from '../actions/audioPlayer.actions';
 
   import Playlist from './Playlist';
@@ -54,17 +73,10 @@ export default class AudioPlayer extends Vue {
     playing: state.audioPlayer.playing,
     index: state.audioPlayer.index,
   });
-
-  const mapDispatchToProps = dispatch => ({
-    playNextSong: () => dispatch(playNext()),
-  });
-
-  AudioPlayer.propTypes = {
-    playNextSong: PropTypes.func.isRequired,
-    playing: PropTypes.bool.isRequired,
-    index: PropTypes.number.isRequired,
-  };
   */
+  created() {
+    this.setTracklist(tracks);
+  }
 }
 </script>
 

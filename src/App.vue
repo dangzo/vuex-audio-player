@@ -19,7 +19,11 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AudioPlayer from "./components/AudioPlayer.vue";
+
+// Containers
+import AudioPlayer from "./containers/AudioPlayer.vue";
+
+// Components
 import Footer from "./components/Footer.vue";
 
 @Component({
@@ -35,6 +39,5 @@ export default class App extends Vue {}
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
 }
 </style>

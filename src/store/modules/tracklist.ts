@@ -1,12 +1,8 @@
 import { Module, VuexModule, Mutation } from "vuex-module-decorators";
 import { Track, EmptyTrack } from "@/models/Track";
 
-@Module({
-  namespaced: true,
-  name: "model/Tracklist",
-  stateFactory: true
-})
-export default class TrackModelStore extends VuexModule {
+@Module({ namespaced: true })
+export default class TracklistModelStore extends VuexModule {
   tracklist: Track[] = [];
 
   selectedTrack: Track = EmptyTrack;
