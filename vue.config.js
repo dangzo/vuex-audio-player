@@ -4,6 +4,7 @@ module.exports = {
       sass: {
         data: `@import "@/styles/index.scss";`
       }
-    }
-  }
+    },
+  },
+  lintOnSave: true
 };

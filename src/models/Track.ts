@@ -9,5 +9,5 @@ export const EmptyTrack: Track = {
   title: undefined,
   author: undefined,
   file: undefined,
-  length: undefined,
+  length: undefined
 };

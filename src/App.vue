@@ -1,17 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div id="app" class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <!-- <PageHeader className="align-center"> -->
+        React-Redux Audio Player
+        <!-- </PageHeader> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <!-- <AudioPlayer /> -->
+      </div>
+    </div>
+    <!-- app footer (copyright and stuff) -->
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import HelloWorld from "./components/HelloWorld.vue";
+// import AudioPlayer from "./components/AudioPlayer.vue";
+import Footer from "./components/Footer.vue";
 
 @Component({
   components: {
-    HelloWorld
+    // AudioPlayer
+    Footer
   }
 })
 export default class App extends Vue {}
@@ -19,11 +33,9 @@ export default class App extends Vue {}
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 </style>

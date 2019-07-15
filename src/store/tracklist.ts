@@ -1,10 +1,10 @@
-import { Module, VuexModule, Mutation } from 'vuex-module-decorators';
-import { Track, EmptyTrack } from '@/models/Track.ts';
+import { Module, VuexModule, Mutation } from "vuex-module-decorators";
+import { Track, EmptyTrack } from "@/models/Track";
 
 @Module({
   namespaced: true,
-  name: 'model/Tracklist',
-  stateFactory: true,
+  name: "model/Tracklist",
+  stateFactory: true
 })
 export default class TrackModelStore extends VuexModule {
   tracklist: Track[] = [];
@@ -13,20 +13,20 @@ export default class TrackModelStore extends VuexModule {
 
   @Mutation
   setTracklist(newTracklist: Track[]): void {
-    this.Tracklist = newTracklist;
+    this.tracklist = newTracklist;
   }
 
   @Mutation
   setSelectedTrackByIndex(trackIndex: number): void {
-    if (this.Tracklist < this.Tracklist.length) {
-      this.selectedTrack = this.Tracklist[trackIndex];
+    if (trackIndex < this.tracklist.length) {
+      this.selectedTrack = this.tracklist[trackIndex];
     } else {
-      this.selectedTrack = this.Tracklist[0];
+      this.selectedTrack = this.tracklist[0];
     }
   }
 
   get getTracklist(): Track[] {
-    return this.Tracklist;
+    return this.tracklist;
   }
 
   get getSelectedTrack(): Track {
