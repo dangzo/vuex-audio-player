@@ -8,7 +8,11 @@
       />
       Your browser does not support HTML5 Audio!
     </audio>
-    <Playlist :tracks="tracks" :selected-track-index="selectedTrackIndex" @song-clicked="doHandleSongClick" />
+    <Playlist
+      :tracks="tracks"
+      :selected-track-index="selectedTrackIndex"
+      @song-clicked="doHandleSongClick"
+    />
   </div>
 </template>
 
@@ -50,7 +54,7 @@ export default class AudioPlayer extends Vue {
 
   // Actual audio player
   player: any = null;
- 
+
   // Play song at selected index
   doPlaySong(index: number) {
     this.selectedTrackIndex = index;
@@ -67,9 +71,8 @@ export default class AudioPlayer extends Vue {
   // playing the last song.
   doPlayNextSong() {
     const nextIndex = this.selectedTrackIndex + 1;
-    this.doPlaySong(
-      nextIndex < this.tracks.length ? nextIndex : 0
-    );
+    const playIndex = nextIndex < this.tracks.length ? nextIndex : 0;
+    this.doPlaySong(playIndex);
   }
 
   // Put the song into play. This also creates the effect of restarting the

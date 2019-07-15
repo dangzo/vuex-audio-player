@@ -34,8 +34,8 @@ export default class Playlist extends Vue {
 
   // Clicked on a song: put it into pause or play it
   // (but the AudioPlayer will manage it).
-  doEmitSongClicked(songIndex) {
-    this.$emit('song-clicked', songIndex);
+  doEmitSongClicked(songIndex: number) {
+    this.$emit("song-clicked", songIndex);
   }
 }
 </script>
