@@ -1,10 +1,10 @@
 <template>
   <ul class="playlist">
-    <!-- <li className={`${currentPlaying(isActive)}`} onClick={this.clickSong}> -->
     <li
       v-for="(track, index) in tracks"
       :key="`track-${index}`"
       :class="{ isPlaying: index === selectedTrackIndex }"
+      @click="doEmitSongClicked(index)"
     >
       <SongItem
         :index="index"
@@ -31,5 +31,11 @@ export default class Playlist extends Vue {
 
   @Prop({ type: Number, required: true })
   selectedTrackIndex!: number;
+
+  // Clicked on a song: put it into pause or play it
+  // (but the AudioPlayer will manage it).
+  doEmitSongClicked(songIndex) {
+    this.$emit('song-clicked', songIndex);
+  }
 }
 </script>

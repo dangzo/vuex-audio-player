@@ -8,18 +8,20 @@
       />
       Your browser does not support HTML5 Audio!
     </audio>
-    <Playlist :tracks="tracks" :selected-track-index="selectedTrackIndex" />
+    <Playlist :tracks="tracks" :selected-track-index="selectedTrackIndex" @song-clicked="doHandleSongClick" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { namespace } from "vuex-class";
-import Playlist from "@/components/Playlist.vue";
 
 import tracks from "@/assets/tracks";
 
-// Model
+// Components
+import Playlist from "@/components/Playlist.vue";
+
+// Models
 import { Track } from "@/models/Track";
 
 const tracklistVuexModule = namespace("tracklist");
@@ -45,49 +47,51 @@ export default class AudioPlayer extends Vue {
   tracks: Track[] = tracks;
 
   selectedTrackIndex: number = 0;
-  /*
-  import { playNext } from '../actions/audioPlayer.actions';
 
-  import Playlist from './Playlist';
-  import tracks from '../tracks';
-
-  class AudioPlayer extends Component {
-    componentDidMount() {
-      const player = document.getElementsByClassName('player')[0];
-      // eslint-disable-next-line  no-shadow
-      const { playNextSong } = this.props;
-      player.addEventListener('ended', () => playNextSong());
-    }
-
-    componentDidUpdate() {
-      const player = document.getElementsByClassName('player')[0];
-      const { index, playing } = this.props;
-
-      player.load(tracks[index].file);
-      if (playing) {
-        player.play();
-      }
-    }
-
-    render() {
-      const { index } = this.props;
-      return (
-        
-      );
+  // Actual audio player
+  player: any = null;
+ 
+  // Play song at selected index
+  doPlaySong(index: number) {
+    this.selectedTrackIndex = index;
+    if (this.player) {
+      this.setSelectedTrackByIndex(index);
+      // Load selected song
+      this.player.load(this.tracks[index].file);
+      // Then play it
+      this.player.play();
     }
   }
 
-  const mapStateToProps = state => ({
-    tracks: state.playlist.tracks,
-    playing: state.audioPlayer.playing,
-    index: state.audioPlayer.index,
-  });
-  */
+  // Play the next available song, cycling to the first one if currently
+  // playing the last song.
+  doPlayNextSong() {
+    const nextIndex = this.selectedTrackIndex + 1;
+    this.doPlaySong(
+      nextIndex < this.tracks.length ? nextIndex : 0
+    );
+  }
+
+  // Put the song into play. This also creates the effect of restarting the
+  // current song if something was already on play.
+  doHandleSongClick(songIndex: number) {
+    this.doPlaySong(songIndex);
+  }
+
   created() {
     // Load all tracks
-    this.setTracklist(tracks);
+    this.setTracklist(this.tracks);
     // Load first track
-    this.setSelectedTrackByIndex(0);
+    this.setSelectedTrackByIndex(this.selectedTrackIndex);
+  }
+
+  mounted() {
+    // Add an event listener to the actual player so we can play the next
+    // song when the current one ends.
+    this.player = document.getElementsByClassName("player")[0];
+    if (this.player) {
+      this.player.addEventListener("ended", () => this.doPlayNextSong());
+    }
   }
 }
 </script>
