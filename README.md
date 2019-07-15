@@ -1,4 +1,4 @@
-# vue-audio-player
+# vuex-audio-player
 
 ## Project setup
 ```

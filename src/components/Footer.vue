@@ -5,8 +5,8 @@
         <div class="align-center">
           <p>Coded by Daniele Gazzelloni</p>
           <p>
-            <a href="https://github.com/dangzo/vue-audio-player" target="_new">
-              https://github.com/dangzo/vue-audio-player
+            <a href="https://github.com/dangzo/vuex-audio-player" target="_new">
+              https://github.com/dangzo/vuex-audio-player
             </a>
           </p>
         </div>

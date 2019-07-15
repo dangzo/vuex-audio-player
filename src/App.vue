@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <div class="align-center page-header">
-          <h1>React-Redux Audio Player</h1>
+          <h1>Vuex Audio Player</h1>
         </div>
       </div>
     </div>
