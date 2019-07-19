@@ -1,5 +1,5 @@
 <template>
-  <ul class="playlist">
+  <ul class="playlist" data-cy="playlist">
     <li
       v-for="(track, index) in tracks"
       :key="`track-${index}`"

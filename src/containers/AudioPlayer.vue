@@ -1,6 +1,6 @@
 <template>
   <div class="player-container">
-    <audio class="player" preload="true" controls="controls">
+    <audio class="player" preload="true" controls="controls" data-cy="player">
       <source
         v-if="selectedTrack"
         :src="`tracks/${selectedTrack.file}`"

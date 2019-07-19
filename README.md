@@ -29,6 +29,11 @@ npm run serve
 npm run build
 ```
 
+### Cypress.io unit tests
+```
+npm run test
+```
+
 ### Lints and fixes files
 ```
 npm run lint
@@ -37,7 +42,7 @@ npm run lint
 
 #### Todo:
 
-- Add unit tests
+- ~~Add e2e tests~~
 
 #### Future/backlog ideas:
 - Add Node.js backend / GraphQL / MongoDB (or other simple db solution)
