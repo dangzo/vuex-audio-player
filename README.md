@@ -21,17 +21,12 @@ npm install
 
 #### Compiles and hot-reloads for development
 ```
-npm run start
+npm run serve
 ```
 
 #### Compiles and minifies for production
 ```
 npm run build
-```
-
-### WIP: Run your tests
-```
-npm run test
 ```
 
 ### Lints and fixes files
@@ -43,7 +38,6 @@ npm run lint
 #### Todo:
 
 - Add unit tests
-- SCSS to SASS
 
 #### Future/backlog ideas:
 - Add Node.js backend / GraphQL / MongoDB (or other simple db solution)
