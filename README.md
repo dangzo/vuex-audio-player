@@ -8,9 +8,10 @@ Goal is to write clean, efficient code, demonstrating proficiency with Vue and V
 
 #### Features implemented:
 
-- Change songs on click
-- Automatically play next song on song end
-- Play/Pause/Volume/etc... so far these are just HTML5 ```<auddio>``` features
+- Songs play and change on click
+- Play, pause, stop, volume etc buttons by HTML5 ```<auddio>``` element
+- The player automatically plays the next song on song end
+- UI is simple and cool :thumbsup:
 
 
 ### Project setup
@@ -28,7 +29,7 @@ npm run start
 npm run build
 ```
 
-### Run your tests
+### WIP: Run your tests
 ```
 npm run test
 ```
@@ -41,9 +42,11 @@ npm run lint
 
 #### Todo:
 
-- ~~Using middlewares~~
-- ~~Using PropTypes~~
-- Unit testing
-- Implement the actual audio palyer controls in React/Redux (so Play, Pause, the progress bar, volume adjust, etc)
-- Let it work with Youtube links or external URLs
+- Add unit tests
+- SCSS to SASS
+
+#### Future/backlog ideas:
+- Add Node.js backend / GraphQL / MongoDB (or other simple db solution)
+- Implement the actual audio player controls in a custom way (so Play, Pause, the progress bar, volume adjust, etc)
+- Let it work with Youtube links, external URLs, uploaded mp3 files (?), etc.
 - Get song meta from file
