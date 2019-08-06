@@ -1,6 +1,6 @@
 # vuex-audio-player
 
-Demo: [http://www.danielegazzelloni.com/vuex-audio-player/](http://www.danielegazzelloni.com/vuex-audio-player/)
+Demo: [http://www.danielegazzelloni.com/demos/vuex-audio-player/](http://www.danielegazzelloni.com/demos/vuex-audio-player/)
 
 An audio player written with Vuex and Twitter Bootstrap. 
 
